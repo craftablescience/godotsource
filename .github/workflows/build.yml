@@ -53,10 +53,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 'godotsource_${{matrix.os.name}}_${{matrix.build_type}}'
-          path: '${{github.workspace}}/demo/lib/*'
+          path: |
+            demo/addons/
+            demo/bin/
           retention-days: 7
 
-  deploy:
+  merge:
     needs:
       - build
     runs-on: ubuntu-latest
@@ -93,5 +95,5 @@ jobs:
         with:
           name: godotsource_All_Release
           path: |
-            ${{github.workspace}}/dest/*
+            dest/*
           retention-days: 7

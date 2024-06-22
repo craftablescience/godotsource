@@ -1,8 +1,0 @@
-[configuration]
-entry_symbol = "${TARGET}_init"
-compatibility_minimum = 4.2
-
-[libraries]
-linux.debug.x86_64 = "res://lib/${TARGET}/Linux_x86_64/lib${TARGET}d.so"
-macos.debug = "res://lib/${TARGET}/Darwin_Universal/lib${TARGET}d.dylib"
-windows.debug.x86_64 = "res://lib/${TARGET}/Windows_AMD64/${TARGET}d.dll"

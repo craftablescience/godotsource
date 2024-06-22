@@ -1,12 +1,11 @@
-#include "KeyValues.h"
-
 #include <gdextension_interface.h>
-#include <godot_cpp/core/defs.hpp>
-#include <godot_cpp/godot.hpp>
+#include <godot_cpp/core/class_db.hpp>
+
+#include "VICE.h"
 
 using namespace godot;
 
-extern "C" [[maybe_unused]] GDExtensionBool GDE_EXPORT kvpp_gd_init(GDExtensionInterfaceGetProcAddress getProcAddress, GDExtensionClassLibraryPtr library, GDExtensionInitialization* initialization) {
+extern "C" [[maybe_unused]] GDExtensionBool GDE_EXPORT vice_init(GDExtensionInterfaceGetProcAddress getProcAddress, GDExtensionClassLibraryPtr library, GDExtensionInitialization* initialization) {
 	GDExtensionBinding::InitObject init_obj{getProcAddress, library, initialization};
 
 	init_obj.register_initializer([](ModuleInitializationLevel level) {
@@ -14,8 +13,7 @@ extern "C" [[maybe_unused]] GDExtensionBool GDE_EXPORT kvpp_gd_init(GDExtensionI
 			return;
 		}
 
-		ClassDB::register_internal_class<KeyValuesElement>();
-		ClassDB::register_class<KeyValues>();
+		ClassDB::register_class<VICE>();
 	});
 
 	init_obj.register_terminator([](ModuleInitializationLevel level) {

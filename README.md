@@ -1,5 +1,5 @@
 # GodotSource
-Load Source engine assets in the Godot engine through a few GDExtensions. Heavily WIP.
+Load Source engine assets in the Godot engine. Heavily WIP.
 
 ## Usage
 

@@ -4,7 +4,9 @@ cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 if (APPLE)
     set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "" FORCE)
 endif()
-project(godotsource)
+project(godotsource
+        DESCRIPTION "Load Source engine assets in the Godot engine."
+        VERSION "0.1.0")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -16,7 +18,9 @@ set(GODOTSOURCE_ARCH ${CMAKE_SYSTEM_PROCESSOR})
 if (APPLE)
     set(GODOTSOURCE_ARCH "universal")
 endif()
-set(GODOTSOURCE_OUT_DIR "${CMAKE_SYSTEM_NAME}_${GODOTSOURCE_ARCH}")
+set(GODOTSOURCE_ADDON_DIR "${CMAKE_CURRENT_SOURCE_DIR}/demo/addons/${PROJECT_NAME}")
+set(GODOTSOURCE_BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/demo/bin")
+set(GODOTSOURCE_LIB_DIR "${CMAKE_SYSTEM_NAME}_${GODOTSOURCE_ARCH}")
 
 # Global CMake options
 if(NOT PROJECT_IS_TOP_LEVEL)
@@ -54,6 +58,9 @@ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/ext/sourcepp")
 
 add_custom_target(${PROJECT_NAME})
 
+# Static helpers library
+include("${CMAKE_CURRENT_SOURCE_DIR}/src/_helpers/_helpers.cmake")
+
 # Macro to set up many things at once for a given GDExtension
 function(godotsource_configure_library TARGET)
     # Define DEBUG macro
@@ -76,7 +83,7 @@ function(godotsource_configure_library TARGET)
     endif()
 
     # Set output directory
-    set(${TARGET}_OUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/demo/lib/${TARGET}/${GODOTSOURCE_OUT_DIR}")
+    set(${TARGET}_OUT_DIR "${GODOTSOURCE_BIN_DIR}/${TARGET}/${GODOTSOURCE_LIB_DIR}")
     set_target_properties(${TARGET} PROPERTIES
             LIBRARY_OUTPUT_DIRECTORY ${${TARGET}_OUT_DIR}
             RUNTIME_OUTPUT_DIRECTORY ${${TARGET}_OUT_DIR})
@@ -97,19 +104,20 @@ function(godotsource_configure_library TARGET)
         message(FATAL_ERROR "Build type must be Debug or Release!")
     endif()
     add_custom_target(${TARGET}_gdextension SOURCES
-            "${CMAKE_CURRENT_SOURCE_DIR}/res/gdextension/Debug.gdextension.in"
-            "${CMAKE_CURRENT_SOURCE_DIR}/res/gdextension/Release.gdextension.in")
+            "${CMAKE_CURRENT_SOURCE_DIR}/res/bin/Debug.gdextension.in"
+            "${CMAKE_CURRENT_SOURCE_DIR}/res/bin/Release.gdextension.in")
     add_dependencies(${TARGET} ${TARGET}_gdextension)
-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/res/gdextension/${CMAKE_BUILD_TYPE}.gdextension.in" "${${TARGET}_OUT_DIR}/../${TARGET}.gdextension")
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/res/bin/${CMAKE_BUILD_TYPE}.gdextension.in" "${${TARGET}_OUT_DIR}/../${TARGET}.gdextension")
 
-    # Link to godot-cpp
-    target_link_libraries(${TARGET} PRIVATE godot-cpp)
+    # Link to helpers and godot-cpp
+    target_link_libraries(${TARGET} PRIVATE ${PROJECT_NAME}_helpers godot::cpp)
 
     # Add to project target
     add_dependencies(${PROJECT_NAME} ${TARGET})
 endfunction()
 
-# kvpp_gd
-if(SOURCEPP_USE_KVPP)
-    include("${CMAKE_CURRENT_SOURCE_DIR}/src/kvpp/_kvpp.cmake")
-endif()
+# Configure plugin config
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/res/plugin.cfg.in" "${GODOTSOURCE_ADDON_DIR}/plugin.cfg")
+
+# vice
+include("${CMAKE_CURRENT_SOURCE_DIR}/src/vice/_vice.cmake")

@@ -17,7 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-KVPP_Test="*res://scripts/test/kvpp.gd"
+Test="*res://scripts/test.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godotsource/plugin.cfg")
 
 [rendering]
 

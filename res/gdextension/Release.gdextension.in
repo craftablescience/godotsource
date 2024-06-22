@@ -1,8 +1,0 @@
-[configuration]
-entry_symbol = "${TARGET}_init"
-compatibility_minimum = 4.2
-
-[libraries]
-linux.release.x86_64 = "res://lib/${TARGET}/Linux_x86_64/lib${TARGET}.so"
-macos.release = "res://lib/${TARGET}/Darwin_Universal/lib${TARGET}.dylib"
-windows.release.x86_64 = "res://lib/${TARGET}/Windows_AMD64/${TARGET}.dll"

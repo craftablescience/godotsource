@@ -1,0 +1,7 @@
+[plugin]
+
+name="GodotSource"
+description="${PROJECT_DESCRIPTION}"
+author="craftablescience"
+version="${PROJECT_VERSION}"
+script="godotsource.gd"
