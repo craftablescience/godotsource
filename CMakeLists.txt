@@ -121,3 +121,6 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/res/plugin.cfg.in" "${GODOTSOURCE_AD
 
 # vice
 include("${CMAKE_CURRENT_SOURCE_DIR}/src/vice/_vice.cmake")
+
+# vtf
+include("${CMAKE_CURRENT_SOURCE_DIR}/src/vtf/_vtf.cmake")
