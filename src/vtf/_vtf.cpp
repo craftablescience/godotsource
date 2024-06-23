@@ -8,9 +8,9 @@ using namespace godot;
 static Ref<ImageLoaderVTF> g_imageLoaderVTF;
 
 extern "C" [[maybe_unused]] GDExtensionBool GDE_EXPORT vtf_init(GDExtensionInterfaceGetProcAddress getProcAddress, GDExtensionClassLibraryPtr library, GDExtensionInitialization* initialization) {
-	GDExtensionBinding::InitObject init_obj{getProcAddress, library, initialization};
+	GDExtensionBinding::InitObject binding{getProcAddress, library, initialization};
 
-	init_obj.register_initializer([](ModuleInitializationLevel level) {
+	binding.register_initializer([](ModuleInitializationLevel level) {
 		if (level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 			return;
 		}
@@ -21,7 +21,7 @@ extern "C" [[maybe_unused]] GDExtensionBool GDE_EXPORT vtf_init(GDExtensionInter
 		g_imageLoaderVTF->add_format_loader();
 	});
 
-	init_obj.register_terminator([](ModuleInitializationLevel level) {
+	binding.register_terminator([](ModuleInitializationLevel level) {
 		if (level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 			return;
 		}
@@ -33,7 +33,7 @@ extern "C" [[maybe_unused]] GDExtensionBool GDE_EXPORT vtf_init(GDExtensionInter
 		g_imageLoaderVTF.unref();
 	});
 
-	init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
+	binding.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
 
-	return init_obj.init();
+	return binding.init();
 }
