@@ -55,7 +55,6 @@ jobs:
           name: 'godotsource_${{matrix.os.name}}_${{matrix.build_type}}'
           path: |
             demo/addons/
-            demo/bin/
           retention-days: 7
 
   merge:
