@@ -3,6 +3,6 @@ entry_symbol = "${TARGET}_init"
 compatibility_minimum = 4.2
 
 [libraries]
-linux.release.x86_64 = "res://bin/${TARGET}/Linux_x86_64/lib${TARGET}.so"
-macos.release = "res://bin/${TARGET}/Darwin_Universal/lib${TARGET}.dylib"
-windows.release.x86_64 = "res://bin/${TARGET}/Windows_AMD64/${TARGET}.dll"
+linux.release.x86_64 = "res://addons/godotsource/bin/${TARGET}/Linux_x86_64/lib${TARGET}.so"
+macos.release = "res://addons/godotsource/bin/${TARGET}/Darwin_Universal/lib${TARGET}.dylib"
+windows.release.x86_64 = "res://addons/godotsource/bin/${TARGET}/Windows_AMD64/${TARGET}.dll"
