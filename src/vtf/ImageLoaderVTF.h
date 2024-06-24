@@ -20,9 +20,9 @@ public:
 	[[nodiscard]] Error _load_image(const Ref<Image>& image, const Ref<FileAccess>& fileAccess, BitField<ImageFormatLoader::LoaderFlags> flags, double scale) override;
 
 protected:
-	static void _bind_methods();
-
 	static std::pair<vtfpp::ImageFormat, Image::Format> getVTFTargetFormat(vtfpp::ImageFormat vtfFormat);
+
+	static void _bind_methods();
 };
 
 } // namespace godot

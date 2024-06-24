@@ -41,8 +41,6 @@ Error ImageLoaderVTF::_load_image(const Ref<Image>& image, const Ref<FileAccess>
 	return OK;
 }
 
-void ImageLoaderVTF::_bind_methods() {}
-
 std::pair<ImageFormat, Image::Format> ImageLoaderVTF::getVTFTargetFormat(ImageFormat vtfFormat) {
 	switch (vtfFormat) {
 		case ImageFormat::DXT1_ONE_BIT_ALPHA:
@@ -83,3 +81,5 @@ std::pair<ImageFormat, Image::Format> ImageLoaderVTF::getVTFTargetFormat(ImageFo
 	}
 	return {ImageFormat::EMPTY, Image::FORMAT_MAX};
 }
+
+void ImageLoaderVTF::_bind_methods() {}

@@ -12,10 +12,12 @@ func read_file_str(path: String) -> String:
 func run_tests() -> bool:
 	var all_passed := true
 	
+	var count_passed_all := 0
+	var count_total_all := 0
 	var base_dir := "res://scripts/tests"
 	for script_name in DirAccess.get_files_at(base_dir):
 		var test_script: Script = load(base_dir + '/' + script_name)
-		var test_node: Node = Node.new()
+		var test_node := Node.new()
 		test_node.set_script(test_script)
 		
 		print("Running tests in " + script_name + "...")
@@ -34,6 +36,9 @@ func run_tests() -> bool:
 		if count_passed < count_total:
 			all_passed = false
 		
+		count_passed_all += count_passed
+		count_total_all += count_total
 		test_node.queue_free()
 	
+	print("Testing complete. Result: " + str(count_passed_all) + '/' + str(count_total_all) + " passed")
 	return all_passed
