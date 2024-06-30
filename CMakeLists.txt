@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 
 # Create project
-if (APPLE)
-    #set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "" FORCE)
-endif()
+# todo: compressonator doesn't play nice with x86_64 linking
+#if (APPLE)
+#    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "" FORCE)
+#endif()
 project(godotsource
         DESCRIPTION "Load Source engine assets in the Godot engine."
         VERSION "0.1.0")
@@ -15,9 +16,6 @@ include(CheckIPOSupported)
 
 # Set up variables
 set(GODOTSOURCE_ARCH ${CMAKE_SYSTEM_PROCESSOR})
-if (APPLE)
-    set(GODOTSOURCE_ARCH "universal")
-endif()
 set(GODOTSOURCE_ADDON_DIR "${CMAKE_CURRENT_SOURCE_DIR}/project/addons/${PROJECT_NAME}")
 set(GODOTSOURCE_BIN_DIR "${GODOTSOURCE_ADDON_DIR}/bin")
 set(GODOTSOURCE_LIB_DIR "${CMAKE_SYSTEM_NAME}_${GODOTSOURCE_ARCH}")
