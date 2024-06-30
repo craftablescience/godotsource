@@ -126,5 +126,4 @@ endmacro()
 
 # Add libraries
 godotsource_add_subdirectory(vice)
-godotsource_add_subdirectory(vmt)
 godotsource_add_subdirectory(vtf)
