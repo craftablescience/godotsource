@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 
 # Create project
 if (APPLE)
-    set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "" FORCE)
+    #set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "" FORCE)
 endif()
 project(godotsource
         DESCRIPTION "Load Source engine assets in the Godot engine."
@@ -119,8 +119,12 @@ endfunction()
 # Configure plugin config
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/res/plugin.cfg.in" "${GODOTSOURCE_ADDON_DIR}/plugin.cfg")
 
-# vice
-include("${CMAKE_CURRENT_SOURCE_DIR}/src/vice/_vice.cmake")
+# Helper to include each library
+macro(godotsource_add_subdirectory DIR)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/src/${DIR}/_${DIR}.cmake")
+endmacro()
 
-# vtf
-include("${CMAKE_CURRENT_SOURCE_DIR}/src/vtf/_vtf.cmake")
+# Add libraries
+godotsource_add_subdirectory(vice)
+godotsource_add_subdirectory(vmt)
+godotsource_add_subdirectory(vtf)
