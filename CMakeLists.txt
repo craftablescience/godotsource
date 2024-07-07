@@ -123,5 +123,6 @@ macro(godotsource_add_subdirectory DIR)
 endmacro()
 
 # Add libraries
+godotsource_add_subdirectory(steam)
 godotsource_add_subdirectory(vice)
 godotsource_add_subdirectory(vtf)

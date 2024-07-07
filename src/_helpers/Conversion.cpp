@@ -23,3 +23,19 @@ String Conversion::stringToGodot(std::string_view string) {
 std::string Conversion::stringToStd(const String& string) {
 	return string.utf8().get_data();
 }
+
+PackedStringArray Conversion::stringArrayToGodot(const std::vector<std::string>& strings) {
+	PackedStringArray array;
+	for (const auto& s : strings) {
+		array.push_back(stringToGodot(s));
+	}
+	return array;
+}
+
+std::vector<std::string> Conversion::stringArrayToStd(const PackedStringArray& strings) {
+	std::vector<std::string> array;
+	for (const auto& s : strings) {
+		array.push_back(stringToStd(s));
+	}
+	return array;
+}
