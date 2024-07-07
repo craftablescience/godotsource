@@ -91,7 +91,7 @@ jobs:
 
       - name: Unzip Artifacts
         run: |
-          mkdir dest && unzip -o "${{github.workspace}}/*.zip" -d "${{github.workspace}}/dest"
+          mkdir dest && mkdir dest/addons && unzip -o "*.zip" -d dest/addons/
           cp LICENSE dest/
 
       - name: Upload Release

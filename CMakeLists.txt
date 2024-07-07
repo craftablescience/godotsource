@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 #endif()
 project(godotsource
         DESCRIPTION "Load Source engine assets in the Godot engine."
-        VERSION "0.1.0")
+        VERSION "0.0.3")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
