@@ -55,7 +55,7 @@ Array KeyValuesElement::get_children() const {
 	return array;
 }
 
-Ref<KeyValuesElement> KeyValuesElement::at_n(std::size_t index) const {
+Ref<KeyValuesElement> KeyValuesElement::at_n(unsigned int index) const {
 	ERR_FAIL_COND_V_EDMSG(!this->data, {}, KV1_ELEMENT_DATA_NOT_LOADED);
 	Ref<KeyValuesElement> kvElem;
 	kvElem.instantiate();
@@ -153,7 +153,7 @@ Array KeyValuesRoot::get_children() {
 	return array;
 }
 
-Ref<KeyValuesElement> KeyValuesRoot::at_n(std::size_t index) {
+Ref<KeyValuesElement> KeyValuesRoot::at_n(unsigned int index) {
 	ERR_FAIL_COND_V_EDMSG(!this->kv, {}, KV1_ROOT_DATA_NOT_LOADED);
 	Ref<KeyValuesElement> kvElem;
 	kvElem.instantiate();

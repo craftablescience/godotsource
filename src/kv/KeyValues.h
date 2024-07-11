@@ -32,7 +32,7 @@ public:
 
 	Array get_children() const; // NOLINT(*-use-nodiscard)
 
-	Ref<KeyValuesElement> at_n(std::size_t index) const; // NOLINT(*-use-nodiscard)
+	Ref<KeyValuesElement> at_n(unsigned int index) const; // NOLINT(*-use-nodiscard)
 
 	Ref<KeyValuesElement> at_k(const String& childKey) const; // NOLINT(*-use-nodiscard)
 
@@ -72,7 +72,7 @@ public:
 
 	Array get_children(); // NOLINT(*-use-nodiscard)
 
-	Ref<KeyValuesElement> at_n(std::size_t index); // NOLINT(*-use-nodiscard)
+	Ref<KeyValuesElement> at_n(unsigned int index); // NOLINT(*-use-nodiscard)
 
 	Ref<KeyValuesElement> at_k(const String& childKey); // NOLINT(*-use-nodiscard)
 
