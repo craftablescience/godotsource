@@ -1,6 +1,6 @@
 #include "ImageLoaderVTF.h"
 
-#include <Conversion.h>
+#include <Convert.h>
 
 using namespace godot;
 using namespace vtfpp;
@@ -29,7 +29,7 @@ Error ImageLoaderVTF::_load_image(const Ref<Image>& image, const Ref<FileAccess>
 	if (data.empty()) {
 		return ERR_INVALID_DATA;
 	}
-	image->set_data(vtf.getWidth(), vtf.getHeight(), false, targetFormat.second, Conversion::bufferToByteArray(data));
+	image->set_data(vtf.getWidth(), vtf.getHeight(), false, targetFormat.second, Convert::bufferToByteArray(data));
 
 	if (image->is_empty()) {
 		return ERR_INVALID_DATA;

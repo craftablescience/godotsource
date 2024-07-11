@@ -10,7 +10,7 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 
-namespace godot::Conversion {
+namespace godot::Convert {
 
 PackedByteArray bufferToByteArray(std::span<const std::byte> buffer);
 
@@ -24,4 +24,4 @@ PackedStringArray stringArrayToGodot(const std::vector<std::string>& strings);
 
 std::vector<std::string> stringArrayToStd(const PackedStringArray& strings);
 
-} // namespace godot::Conversion
+} // namespace godot::Convert

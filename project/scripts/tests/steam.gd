@@ -7,7 +7,7 @@ func test_apps() -> bool:
 
 	# Going to assume the runner has *something* installed
 	if not Steam.is_found():
-	    return false
+		return false
 
 	var app_list := Steam.get_installed_apps()
 	return not app_list.is_empty()

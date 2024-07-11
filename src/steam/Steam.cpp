@@ -3,7 +3,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <sourcepp/string/String.h>
 
-#include <Conversion.h>
+#include <Convert.h>
 
 using namespace godot;
 using namespace sourcepp;
@@ -26,7 +26,7 @@ String Steam::get_install_dir() {
 #ifdef _WIN32
 	string::normalizeSlashes(dir);
 #endif
-	return Conversion::stringToGodot(dir);
+	return Convert::stringToGodot(dir);
 }
 
 PackedStringArray Steam::get_library_dirs() {
@@ -35,7 +35,7 @@ PackedStringArray Steam::get_library_dirs() {
 	auto dirs = ::getSteam().getLibraryDirs();
 	for (auto& dir : dirs) {
 		string::normalizeSlashes(dir);
-		array.push_back(Conversion::stringToGodot(dir));
+		array.push_back(Convert::stringToGodot(dir));
 	}
 	return array;
 #else
@@ -48,7 +48,7 @@ String Steam::get_sourcemod_dir() {
 #ifdef _WIN32
 	string::normalizeSlashes(dir);
 #endif
-	return Conversion::stringToGodot(dir);
+	return Convert::stringToGodot(dir);
 }
 
 PackedInt64Array Steam::get_installed_apps() {
@@ -65,7 +65,7 @@ bool Steam::is_app_installed(steampp::AppID appID) {
 }
 
 String Steam::get_app_name(steampp::AppID appID) {
-	return Conversion::stringToGodot(::getSteam().getAppName(appID));
+	return Convert::stringToGodot(::getSteam().getAppName(appID));
 }
 
 String Steam::get_app_install_dir(steampp::AppID appID) {
@@ -73,7 +73,7 @@ String Steam::get_app_install_dir(steampp::AppID appID) {
 #ifdef _WIN32
 	string::normalizeSlashes(dir);
 #endif
-	return Conversion::stringToGodot(dir);
+	return Convert::stringToGodot(dir);
 }
 
 String Steam::get_app_icon_path(steampp::AppID appID) {
@@ -81,7 +81,7 @@ String Steam::get_app_icon_path(steampp::AppID appID) {
 #ifdef _WIN32
 	string::normalizeSlashes(path);
 #endif
-	return Conversion::stringToGodot(path);
+	return Convert::stringToGodot(path);
 }
 
 String Steam::get_app_logo_path(steampp::AppID appID) {
@@ -89,7 +89,7 @@ String Steam::get_app_logo_path(steampp::AppID appID) {
 #ifdef _WIN32
 	string::normalizeSlashes(path);
 #endif
-	return Conversion::stringToGodot(path);
+	return Convert::stringToGodot(path);
 }
 
 String Steam::get_app_box_art_path(steampp::AppID appID) {
@@ -97,7 +97,7 @@ String Steam::get_app_box_art_path(steampp::AppID appID) {
 #ifdef _WIN32
 	string::normalizeSlashes(path);
 #endif
-	return Conversion::stringToGodot(path);
+	return Convert::stringToGodot(path);
 }
 
 String Steam::get_app_store_art_path(steampp::AppID appID) {
@@ -105,7 +105,7 @@ String Steam::get_app_store_art_path(steampp::AppID appID) {
 #ifdef _WIN32
 	string::normalizeSlashes(path);
 #endif
-	return Conversion::stringToGodot(path);
+	return Convert::stringToGodot(path);
 }
 
 bool Steam::is_app_using_source_engine(steampp::AppID appID) {

@@ -1,6 +1,6 @@
 add_library(${PROJECT_NAME}_helpers STATIC
-        "${CMAKE_CURRENT_LIST_DIR}/Conversion.cpp"
-        "${CMAKE_CURRENT_LIST_DIR}/Conversion.h")
+        "${CMAKE_CURRENT_LIST_DIR}/Convert.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/Convert.h")
 
 target_link_libraries(${PROJECT_NAME}_helpers PRIVATE godot::cpp)
 
