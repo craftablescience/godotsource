@@ -39,7 +39,7 @@ PackedStringArray Steam::get_library_dirs() {
 	}
 	return array;
 #else
-	return Conversion::stringArrayToGodot(::getSteam().getLibraryDirs());
+	return Convert::stringArrayToGodot(::getSteam().getLibraryDirs());
 #endif
 }
 
