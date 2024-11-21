@@ -87,7 +87,8 @@ protected:
 };
 
 struct KeyValuesElementData {
-	const kvpp::KV1Element& element;
+	// Template bullshit but it works
+	const kvpp::KV1ElementBase<std::string_view, kvpp::KV1ElementReadable>& element;
 };
 
 } // namespace godot

@@ -1,6 +1,6 @@
 [configuration]
 entry_symbol = "${TARGET}_init"
-compatibility_minimum = 4.2
+compatibility_minimum = 4.3
 
 [libraries]
 linux.debug.x86_64 = "res://addons/godotsource/bin/${TARGET}/Linux_x86_64/lib${TARGET}d.so"

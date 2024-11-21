@@ -9,7 +9,7 @@ PackedStringArray ImageLoaderVTF::_get_recognized_extensions() const {
 	return {"vtf"};
 }
 
-Error ImageLoaderVTF::_load_image(const Ref<Image>& image, const Ref<FileAccess>& fileAccess, BitField<ImageFormatLoader::LoaderFlags> flags, double scale) {
+Error ImageLoaderVTF::_load_image(const Ref<Image>& image, const Ref<FileAccess>& fileAccess, BitField<ImageFormatLoader::LoaderFlags> flags, float scale) {
 	// todo: FLAG_CONVERT_COLORS
 	// todo: apply scale
 
@@ -52,17 +52,21 @@ std::pair<ImageFormat, Image::Format> ImageLoaderVTF::getVTFTargetFormat(ImageFo
 		case ImageFormat::BGRA5551:
 		case ImageFormat::ABGR8888:
 		case ImageFormat::UVWQ8888:
-		case ImageFormat::UVLX8888:           return {ImageFormat::RGBA8888,      Image::FORMAT_RGBA8};
+		case ImageFormat::UVLX8888:
+		case ImageFormat::RGBA1010102:
+		case ImageFormat::BGRA1010102:        return {ImageFormat::RGBA8888,      Image::FORMAT_RGBA8};
 		case ImageFormat::RGB888:
 		case ImageFormat::BGRX8888:
 		case ImageFormat::BGRX5551:
+		case ImageFormat::RGBX8888:
 		case ImageFormat::BGR888:             return {ImageFormat::RGB888,        Image::FORMAT_RGB8};
 		case ImageFormat::BGR565:
 		case ImageFormat::RGB565:             return {ImageFormat::RGB565,        Image::FORMAT_RGB565};
 		case ImageFormat::I8:                 return {ImageFormat::I8,            Image::FORMAT_L8};
 		case ImageFormat::IA88:               return {ImageFormat::IA88,          Image::FORMAT_LA8};
-		case ImageFormat::P8:
 		case ImageFormat::A8:                 return {ImageFormat::A8,            Image::FORMAT_R8};
+		case ImageFormat::P8:
+		case ImageFormat::R8:                 return {ImageFormat::R8,            Image::FORMAT_R8};
 		case ImageFormat::RGB888_BLUESCREEN:
 		case ImageFormat::BGR888_BLUESCREEN:  return {ImageFormat::RGB888,        Image::FORMAT_RGB8};
 		case ImageFormat::DXT1:               return {ImageFormat::DXT1,          Image::FORMAT_DXT1};
@@ -77,6 +81,9 @@ std::pair<ImageFormat, Image::Format> ImageLoaderVTF::getVTFTargetFormat(ImageFo
 		case ImageFormat::R32F:               return {ImageFormat::R32F,          Image::FORMAT_RF};
 		case ImageFormat::RGB323232F:         return {ImageFormat::RGB323232F,    Image::FORMAT_RGBF};
 		case ImageFormat::RGBA32323232F:      return {ImageFormat::RGBA32323232F, Image::FORMAT_RGBAF};
+		case ImageFormat::RG1616F:            return {ImageFormat::RG1616F,       Image::FORMAT_RGH};
+		case ImageFormat::RG3232F:            return {ImageFormat::RG3232F,       Image::FORMAT_RGF};
+		case ImageFormat::R16F:               return {ImageFormat::R16F,          Image::FORMAT_RH};
 		case ImageFormat::EMPTY:              break;
 	}
 	return {ImageFormat::EMPTY, Image::FORMAT_MAX};

@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 #endif()
 project(godotsource
         DESCRIPTION "Load Source engine assets in the Godot engine."
-        VERSION "0.0.3")
+        VERSION "0.0.4")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -125,5 +125,5 @@ endmacro()
 # Add libraries
 godotsource_add_subdirectory(kv)
 godotsource_add_subdirectory(steam)
-godotsource_add_subdirectory(vice)
+godotsource_add_subdirectory(vcrypt)
 godotsource_add_subdirectory(vtf)

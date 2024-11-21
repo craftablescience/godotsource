@@ -1,18 +1,18 @@
 #include "VICE.h"
 
 #include <godot_cpp/core/class_db.hpp>
-#include <vicepp/vicepp.h>
+#include <vcryptpp/VICE.h>
 
 #include <Convert.h>
 
 using namespace godot;
 
 PackedByteArray VICE::encrypt(const String& data, const String& code) {
-	return Convert::bufferToByteArray(vicepp::encrypt(Convert::byteArrayToBuffer(data.to_utf8_buffer()), Convert::stringToStd(code)));
+	return Convert::bufferToByteArray(vcryptpp::VICE::encrypt(Convert::byteArrayToBuffer(data.to_utf8_buffer()), Convert::stringToStd(code)));
 }
 
 PackedByteArray VICE::decrypt(const PackedByteArray& data, const String& code) {
-	return Convert::bufferToByteArray(vicepp::decrypt(Convert::byteArrayToBuffer(data), Convert::stringToStd(code)));
+	return Convert::bufferToByteArray(vcryptpp::VICE::decrypt(Convert::byteArrayToBuffer(data), Convert::stringToStd(code)));
 }
 
 void VICE::_bind_methods() {

@@ -17,7 +17,7 @@ public:
 
 	[[nodiscard]] PackedStringArray _get_recognized_extensions() const override;
 
-	[[nodiscard]] Error _load_image(const Ref<Image>& image, const Ref<FileAccess>& fileAccess, BitField<ImageFormatLoader::LoaderFlags> flags, double scale) override;
+	[[nodiscard]] Error _load_image(const Ref<Image>& image, const Ref<FileAccess>& fileAccess, BitField<ImageFormatLoader::LoaderFlags> flags, float scale) override;
 
 protected:
 	static std::pair<vtfpp::ImageFormat, Image::Format> getVTFTargetFormat(vtfpp::ImageFormat vtfFormat);

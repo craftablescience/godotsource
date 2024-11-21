@@ -1,7 +1,7 @@
 #include "Steam.h"
 
 #include <godot_cpp/core/class_db.hpp>
-#include <sourcepp/string/String.h>
+#include <sourcepp/String.h>
 
 #include <Convert.h>
 
